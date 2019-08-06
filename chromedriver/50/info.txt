@@ -1,2 +1,0 @@
-Chrome Version: 50
-Driver Version: 2.23
