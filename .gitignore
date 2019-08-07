@@ -2,6 +2,8 @@
 
 ### Customer
 chromedriver/
+.idea/**
+target/**
 
 
 ### VisualStudioCode template
