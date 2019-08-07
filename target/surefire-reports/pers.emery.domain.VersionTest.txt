@@ -1,10 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: pers.emery.domain.VersionTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.01 sec <<< FAILURE!
-winTest(pers.emery.domain.VersionTest)  Time elapsed: 0 sec  <<< ERROR!
+Tests run: 4, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.111 sec <<< FAILURE!
+winTest(pers.emery.domain.VersionTest)  Time elapsed: 0.003 sec  <<< ERROR!
 pers.emery.exception.LocalVersionException: 无法识别本地安装的Chrome
-	at pers.emery.util.Version.windowLocalChromeVersion(Version.java:59)
+	at pers.emery.util.Version.windowLocalChromeVersion(Version.java:68)
 	at pers.emery.domain.VersionTest.winTest(VersionTest.java:15)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

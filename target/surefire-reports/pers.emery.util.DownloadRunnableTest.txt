@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: pers.emery.enums.WindowInstallPathEnumTest
+Test set: pers.emery.util.DownloadRunnableTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 sec

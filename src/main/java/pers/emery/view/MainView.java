@@ -23,7 +23,7 @@ public class MainView extends AbstractMainView {
 
     private void cardPanelSwitch() {
         downloadPanel.switchProxyPanelBtn.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "待开发。如需使用，请配置系统代理。", "代理", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "待开发。如需使用，请在操作系统配置代理。", "代理", JOptionPane.INFORMATION_MESSAGE);
         });
     }
 

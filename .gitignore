@@ -1,7 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 ### Customer
-chromedriver/**
+chromedriver/
+
 
 ### VisualStudioCode template
 .vscode/*

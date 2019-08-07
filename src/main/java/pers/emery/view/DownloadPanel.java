@@ -54,10 +54,10 @@ public class DownloadPanel extends AbstractDownloadPanel {
         try {
             ChromeInfoVO chromeInfoVO = versionService.initVersionLoad();
             setVersionInfo(chromeInfoVO);
-            log.info(chromeInfoVO.toString());
-            setTipInfo("已自动识别本地安装的 Chrome: " + chromeInfoVO.getChromeVersion() + " ，可直接点击下载本地版本。");
+            log.debug(chromeInfoVO.toString());
+            setTipInfo("自动识别本地 Chrome: " + chromeInfoVO.getChromeVersion() + "，可点击下载本地版本。稍等片刻即可下载完成。");
         } catch (LocalVersionException | DriverVersionException e) {
-            log.info(e.getMessage());
+            log.debug(e.getMessage());
             setTipInfo(e.getMessage());
         }
     }
@@ -65,7 +65,7 @@ public class DownloadPanel extends AbstractDownloadPanel {
     @Override
     protected void showCurrentSystem() {
         String osName = System.getProperty("os.name");
-        log.info("current system: {}", osName);
+        log.debug("current system: {}", osName);
         localSystemLabel.setText("Current System:  " + osName);
     }
 
@@ -132,14 +132,14 @@ public class DownloadPanel extends AbstractDownloadPanel {
                 VersionDto dto = new VersionDto();
                 dto.setMirrorEnum(selectedItem);
                 dto.setChromeVersion(version);
-                log.info(dto.toString());
+                log.debug(dto.toString());
                 // 发送 get 请求
                 String driverVersion = versionService.getDriverVersion(dto);
 
                 // 更新信息
                 setVersionInfo(new ChromeInfoVO(version, driverVersion));
                 if (!"".equals(driverVersion)) {
-                    setTipInfo("更新 Chrome 版本为：" + version + " ，可点击下载。");
+                    setTipInfo("更新 Chrome 版本为：" + version + " ，点击下载后，稍等片刻即可下载完成。");
                 } else {
                     setDangerInput();
                     setTipInfo("无法检测到相应版本，请检查输入");
@@ -163,7 +163,7 @@ public class DownloadPanel extends AbstractDownloadPanel {
             if (chromeVersion.matches("[0-9|.]+")) {
                 chromeVersion = chromeVersion.split("[.]")[0];
             }
-            log.info(chromeVersion);
+            log.debug(chromeVersion);
             String driverVersion = driverVersionLabel.getText();
             ZipNameEnum zipNameEnum = (ZipNameEnum) zipComboBox.getSelectedItem();
             MirrorEnum mirrorEnum = (MirrorEnum) mirrorComboBox.getSelectedItem();
@@ -175,7 +175,7 @@ public class DownloadPanel extends AbstractDownloadPanel {
             downloadDTO.setZipNameEnum(zipNameEnum);
             downloadDTO.setMirrorEnum(mirrorEnum);
             downloadDTO.setRootPath(rootPath);
-            log.info(downloadDTO.toString());
+            log.debug(downloadDTO.toString());
 
             boolean sign = false;
             try {
@@ -184,7 +184,7 @@ public class DownloadPanel extends AbstractDownloadPanel {
                 setTipInfo(e.getMessage());
             }
 
-            log.info(String.valueOf(sign));
+            log.debug(String.valueOf(sign));
 
             if (sign) {
                 setTipInfo("下载完成！ 路径：" + rootPath);

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: pers.emery.ApplicationTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.905 sec <<< FAILURE!
-jsonTest(pers.emery.ApplicationTest)  Time elapsed: 0.19 sec  <<< ERROR!
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.685 sec <<< FAILURE!
+jsonTest(pers.emery.ApplicationTest)  Time elapsed: 0.209 sec  <<< ERROR!
 java.io.FileNotFoundException: src/chromedriver.json (没有那个文件或目录)
 	at java.io.FileInputStream.open0(Native Method)
 	at java.io.FileInputStream.open(FileInputStream.java:195)

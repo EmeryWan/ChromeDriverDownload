@@ -7,9 +7,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URL;
 
 /**
  * @author emery
@@ -28,16 +26,19 @@ public class AboutView extends AbstractAboutView {
 
     @Override
     protected void imageLoad() {
-        Path imgPath = Paths.get(AbstractAboutView.class.getResource("/").getPath(), "tip.png");
-        ImageIcon icon = new ImageIcon(imgPath.toString());
-        log.info(imgPath.toString());
-        log.info(String.valueOf(Files.exists(imgPath)));
-        imgLabel.setIcon(icon);
+        ClassLoader classLoader = AbstractAboutView.class.getClassLoader();
+        URL imgResource = classLoader.getResource("tip.png");
+        ImageIcon icon;
+        if (imgResource != null) {
+            icon = new ImageIcon(imgResource);
+            imgLabel.setIcon(icon);
+        }
     }
 
     @Override
     protected void github() {
         githubBtn.addActionListener(e -> {
+            log.info(GITHUB_URL);
             urlClipboard(GITHUB_URL);
             setTipInfo("Github 项目地址 链接 URL 已复制到剪贴板");
         });
@@ -46,6 +47,7 @@ public class AboutView extends AbstractAboutView {
     @Override
     protected void selenium() {
         seleniumBtn.addActionListener(e -> {
+            log.info(SELENIUM_URL);
             urlClipboard(SELENIUM_URL);
             setTipInfo("Selenium 官网链接 URL 已复制到剪贴板");
         });
@@ -54,6 +56,7 @@ public class AboutView extends AbstractAboutView {
     @Override
     protected void chromeDriver() {
         chromeDriverBtn.addActionListener(e -> {
+            log.info(CHROME_DRIVER_URL);
             urlClipboard(CHROME_DRIVER_URL);
             setTipInfo("ChromeDriver 官网链接 URL 已复制到剪贴板");
         });
