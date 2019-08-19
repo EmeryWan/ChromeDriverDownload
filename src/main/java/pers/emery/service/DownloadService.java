@@ -5,12 +5,13 @@ import pers.emery.dto.DownloadDTO;
 import pers.emery.dto.DownloadThreadDto;
 import pers.emery.util.DownloadRunnable;
 
+import java.awt.*;
 import java.nio.file.Paths;
 
 @Slf4j
 public class DownloadService {
 
-    public boolean downloadDriver(DownloadDTO dto) {
+    public void downloadDriver(DownloadDTO dto) {
 
         DownloadThreadDto downloadThreadDto = new DownloadThreadDto();
 
@@ -30,16 +31,7 @@ public class DownloadService {
 
         log.info(downloadThreadDto.toString());
 
-        Thread thread = new Thread(new DownloadRunnable(downloadThreadDto));
-        boolean sign = true;
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            sign = false;
-        }
-
-        return sign;
+        EventQueue.invokeLater(new DownloadRunnable(downloadThreadDto));
     }
 
 }

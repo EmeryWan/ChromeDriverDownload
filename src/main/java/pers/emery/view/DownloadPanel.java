@@ -176,21 +176,24 @@ public class DownloadPanel extends AbstractDownloadPanel {
             downloadDTO.setMirrorEnum(mirrorEnum);
             downloadDTO.setRootPath(rootPath);
             log.debug(downloadDTO.toString());
+            setTipInfo("下载中。请稍后。");
 
             boolean sign = false;
             try {
-                sign = downloadService.downloadDriver(downloadDTO);
+                downloadService.downloadDriver(downloadDTO);
+                sign = true;
             } catch (DownloadException e) {
                 setTipInfo(e.getMessage());
             }
 
-            log.debug(String.valueOf(sign));
-
-            if (sign) {
-                setTipInfo("下载完成！ 路径：" + rootPath);
-            } else {
-                setTipInfo("下载失败！请重试");
-            }
+            final boolean s = sign;
+            EventQueue.invokeLater(() -> {
+                if (s) {
+                    setTipInfo("下载完成！ 路径：" + rootPath);
+                } else {
+                    setTipInfo("下载失败！请重试。");
+                }
+            });
         });
     }
 

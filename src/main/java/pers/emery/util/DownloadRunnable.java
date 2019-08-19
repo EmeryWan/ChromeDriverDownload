@@ -1,5 +1,6 @@
 package pers.emery.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -15,6 +16,7 @@ import java.nio.file.Files;
 /**
  * @author emery
  */
+@Slf4j
 public class DownloadRunnable implements Runnable {
 
     private DownloadThreadDto info;
@@ -30,6 +32,7 @@ public class DownloadRunnable implements Runnable {
             HttpGet httpGet = new HttpGet(info.getUrl());
 
             try (CloseableHttpResponse httpResponse = httpClient.execute(httpGet)) {
+                log.debug("开始下载");
                 if (httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
                     throw new DownloadException("无法连接下载 URL，请重试");
                 }
@@ -50,6 +53,7 @@ public class DownloadRunnable implements Runnable {
                 try (FileOutputStream fileOut = new FileOutputStream(info.getZipPath().toFile())) {
                     HttpEntity entity = httpResponse.getEntity();
                     entity.writeTo(fileOut);
+                    log.debug("下载完成");
                 }
             }
 
