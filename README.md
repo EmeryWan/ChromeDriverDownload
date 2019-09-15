@@ -1,7 +1,8 @@
 # ChromeDriver 下载程序
 
-本程序可自动识别本地安装的 Chrome 浏览器版本（Ubuntu18.04，Windows10 上测试通过，其他未测试），找到相应的 ChromeDriver 驱动版本，进行下载。
-也可输入需要下载的 Chrome 版本与系统信息，下载对应的版本的 ChromeDriver。
+- 可自动识别本地安装的 Chrome 浏览器版本，找到对应的 ChromeDriver 驱动版本，进行下载
+  - Ubuntu18.04，Windows10 上测试通过
+- 可手动输入需要下载的 Chrome 版本与系统信息，下载对应的版本的 ChromeDriver
 
 ## 介绍
 
